@@ -36,7 +36,7 @@ class HashingStream implements StreamInterface
         $this->callback = $onComplete;
     }
 
-    public function read($length)
+    public function read(int $length)
     {
         $data = $this->stream->read($length);
         $this->hash->update($data);
@@ -50,7 +50,7 @@ class HashingStream implements StreamInterface
         return $data;
     }
 
-    public function seek($offset, $whence = SEEK_SET)
+    public function seek(int $offset, int $whence = SEEK_SET)
     {
         if ($offset === 0) {
             $this->hash->reset();
